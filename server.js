@@ -12,6 +12,7 @@ const httpServer = createServer(app)
 const allowedOrigins = [
   'http://localhost:5173',
   'https://lucky-tapioca-d355f7.netlify.app',
+  'https://b2b-backend-b6l6.onrender.com',
   process.env.FRONTEND_URL
 ]
 
