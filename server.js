@@ -8,13 +8,17 @@ require('dotenv').config()
 const app = express()
 const httpServer = createServer(app)
 
+// ── Allowed Origins ────────────────────────────────────
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://lucky-tapioca-d355f7.netlify.app',
+  process.env.FRONTEND_URL
+]
+
 // ── Socket.io ──────────────────────────────────────────
 const io = new Server(httpServer, {
   cors: {
-    origin: [
-      'http://localhost:5173',
-      process.env.FRONTEND_URL
-    ],
+    origin: allowedOrigins,
     methods: ['GET', 'POST'],
     credentials: true
   }
@@ -23,10 +27,7 @@ const io = new Server(httpServer, {
 // ── Middleware ─────────────────────────────────────────
 app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }))
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    process.env.FRONTEND_URL
-  ],
+  origin: allowedOrigins,
   credentials: true
 }))
 app.use(express.json())
