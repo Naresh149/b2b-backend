@@ -9,12 +9,19 @@ const app = express()
 const httpServer = createServer(app)
 
 // ── Allowed Origins ────────────────────────────────────
+
 const allowedOrigins = [
   'http://localhost:5173',
   'https://lucky-tapioca-d355f7.netlify.app',
-  'https://b2b-backend-b6l6.onrender.com',
+  'https://b2b-ecommerce-india.netlify.app',
   process.env.FRONTEND_URL
 ]
+// const allowedOrigins = [
+//   'http://localhost:5173',
+//   'https://lucky-tapioca-d355f7.netlify.app',
+//   'https://b2b-backend-b6l6.onrender.com',
+//   process.env.FRONTEND_URL
+// ]
 
 // ── Socket.io ──────────────────────────────────────────
 const io = new Server(httpServer, {
